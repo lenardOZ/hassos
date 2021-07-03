@@ -82,7 +82,7 @@ info "Container ID is $VMID."
 # Get latest Home Assistant disk image archive URL
 msg "Getting URL for latest Home Assistant disk image..."
 RELEASE_TYPE=vmdk
-URL="https://api.github.com/repos/home-assistant/operating-system/releases/40830083"
+URL="https://github.com/home-assistant/operating-system/releases/download/5.13/hassos_ova-5.13.vmdk.xz"
 
 if [ -z "$URL" ]; then
   die "Github has returned an error. A rate limit may have been applied to your connection."
