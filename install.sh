@@ -82,22 +82,8 @@ info "Container ID is $VMID."
 # Get latest Home Assistant disk image archive URL
 msg "Getting URL for latest Home Assistant disk image..."
 RELEASE_TYPE=vmdk
-URL=$(cat<<EOF | python3
-import requests
-url = "https://api.github.com/repos/home-assistant/operating-system/releases"
-r = requests.get(url).json()
-if "message" in r:
-    exit()
-for release in r:
-    if release["prerelease"]:
-        continue
-    for asset in release["assets"]:
-        if asset["name"].find("$RELEASE_TYPE") != -1:
-            image_url = asset["browser_download_url"]
-            print(image_url)
-            exit()
-EOF
-)
+URL="https://api.github.com/repos/home-assistant/operating-system/releases/40830083"
+
 if [ -z "$URL" ]; then
   die "Github has returned an error. A rate limit may have been applied to your connection."
 fi
